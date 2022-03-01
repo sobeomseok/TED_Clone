@@ -16,6 +16,8 @@
 		A9216E5D27CE52D100DB0838 /* PodcastViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E5C27CE52D100DB0838 /* PodcastViewController.swift */; };
 		A9216E5F27CE52EB00DB0838 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E5E27CE52EB00DB0838 /* SearchViewController.swift */; };
 		A9216E6127CE52F200DB0838 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6027CE52F100DB0838 /* ProfileViewController.swift */; };
+		A9216E6327CE549200DB0838 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6227CE549200DB0838 /* Model.swift */; };
+		A9216E6527CE549900DB0838 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6427CE549900DB0838 /* ViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		A9216E5C27CE52D100DB0838 /* PodcastViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastViewController.swift; sourceTree = "<group>"; };
 		A9216E5E27CE52EB00DB0838 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A9216E6027CE52F100DB0838 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		A9216E6227CE549200DB0838 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		A9216E6427CE549900DB0838 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 		A9216E5727CE4FE300DB0838 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				A9216E6427CE549900DB0838 /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -110,6 +115,7 @@
 		A9216E5827CE4FE900DB0838 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				A9216E6227CE549200DB0838 /* Model.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -195,12 +201,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9216E5F27CE52EB00DB0838 /* SearchViewController.swift in Sources */,
+				A9216E6527CE549900DB0838 /* ViewModel.swift in Sources */,
 				A9216E4527CE44D200DB0838 /* HomeViewController.swift in Sources */,
 				A9216E5B27CE509A00DB0838 /* TabBarController.swift in Sources */,
 				A9216E5D27CE52D100DB0838 /* PodcastViewController.swift in Sources */,
 				A9216E6127CE52F200DB0838 /* ProfileViewController.swift in Sources */,
 				A9216E4127CE44D200DB0838 /* AppDelegate.swift in Sources */,
 				A9216E4327CE44D200DB0838 /* SceneDelegate.swift in Sources */,
+				A9216E6327CE549200DB0838 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
