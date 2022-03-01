@@ -14,6 +14,6 @@ class PodcastViewController: UIViewController {
 
         view.backgroundColor = UIColor.backgroundColor
     }
-    //ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴ
+    
 
 }
