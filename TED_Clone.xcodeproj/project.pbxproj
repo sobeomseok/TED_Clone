@@ -19,6 +19,7 @@
 		A9216E6327CE549200DB0838 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6227CE549200DB0838 /* Model.swift */; };
 		A9216E6527CE549900DB0838 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6427CE549900DB0838 /* ViewModel.swift */; };
 		FEA0EF3227CE57A200108D67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EF3127CE57A200108D67 /* extension.swift */; };
+		FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		A9216E6227CE549200DB0838 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A9216E6427CE549900DB0838 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		FEA0EF3127CE57A200108D67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
+		FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 			children = (
 				A9216E4427CE44D200DB0838 /* HomeViewController.swift */,
 				A9216E5C27CE52D100DB0838 /* PodcastViewController.swift */,
+				FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */,
 				A9216E5E27CE52EB00DB0838 /* SearchViewController.swift */,
 				A9216E6027CE52F100DB0838 /* ProfileViewController.swift */,
 				A9216E5A27CE509A00DB0838 /* TabBarController.swift */,
@@ -220,6 +223,7 @@
 				A9216E6127CE52F200DB0838 /* ProfileViewController.swift in Sources */,
 				A9216E4127CE44D200DB0838 /* AppDelegate.swift in Sources */,
 				A9216E4327CE44D200DB0838 /* SceneDelegate.swift in Sources */,
+				FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */,
 				A9216E6327CE549200DB0838 /* Model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

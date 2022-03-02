@@ -23,6 +23,11 @@ class PodcastViewController: UICollectionViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        //네비게이션 바 관련 코드입니다. 이것은 viewdidload에 넣으면 나중엔 작동하지않습니다.
+        navigationController?.navigationBar.isHidden = true
+    }
     
 
 
@@ -30,7 +35,7 @@ class PodcastViewController: UICollectionViewController {
 
 //MARK: - Helper Functions
 
-func configureUI() {
+private func configureUI() {
     //백그라운드 컬러를 테드앱과 똑같은 색으로 맞췄습니다.
     collectionView.backgroundColor = .backgroundColor
     
@@ -38,8 +43,7 @@ func configureUI() {
     collectionView.register(PodCastCollectionViewCell.self, forCellWithReuseIdentifier: PodCastCollectionViewCell.identifier)
     collectionView.register(CollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionReusableView.identifier)
     
-    //네비게이션 바 관련 코드입니다.
-    navigationController?.navigationBar.isHidden = true
+   
     
 }
 
@@ -69,6 +73,11 @@ func configureUI() {
         return headerView
     }
     
+    //셀을 선택 한 뒤에 상세뷰로 이동하는 코드 입니다.
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(PodcastDetailViewController(), animated: true)
+        print(indexPath.row)
+    }
     
 
 }
