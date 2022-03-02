@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
     
     private func setUpControllers() {
         let home = HomeViewController()
-        let podcast = PodcastViewController()
+        let podcast = PodcastViewController(collectionViewLayout: UICollectionViewFlowLayout())
         let search = SearchViewController()
         let profile = ProfileViewController()
         
@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
         let nav4 = UINavigationController(rootViewController: profile)
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 2)
+        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "headphones"), tag: 2)
         nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 3)
         nav4.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 4)
         
