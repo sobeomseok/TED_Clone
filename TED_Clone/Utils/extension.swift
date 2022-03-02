@@ -6,6 +6,11 @@
 //
 
 import UIKit
+//MARK: - 색깔 확장
+extension UIColor {
+    static let backgroundColor = UIColor(displayP3Red: 0.066, green: 0.066, blue: 0.066, alpha: 1)
+}
+
 
 //MARK: - 오토레이아웃 확장
 extension UIView {
