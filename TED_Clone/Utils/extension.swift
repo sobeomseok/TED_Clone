@@ -6,9 +6,13 @@
 //
 
 import UIKit
-//MARK: - 색깔 확장
+
 extension UIColor {
+    //MARK: - 색깔 확장
     static let backgroundColor = UIColor(displayP3Red: 0.066, green: 0.066, blue: 0.066, alpha: 1)
+    
+    
+
 }
 
 
@@ -50,4 +54,7 @@ extension UIView {
     func centerY(inView view: UIView, constant: CGFloat = 0) {
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
     }
+    
+    
+    
 }

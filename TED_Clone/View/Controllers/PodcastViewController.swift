@@ -76,7 +76,6 @@ private func configureUI() {
     //셀을 선택 한 뒤에 상세뷰로 이동하는 코드 입니다.
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         navigationController?.pushViewController(PodcastDetailViewController(), animated: true)
-        print(indexPath.row)
     }
     
 
@@ -144,7 +143,7 @@ class PodCastCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .lightGray
         label.text = "1212.12.12"
-        label.font = .systemFont(ofSize: 13)
+        label.font = .systemFont(ofSize: 15)
         return label
     }()
     

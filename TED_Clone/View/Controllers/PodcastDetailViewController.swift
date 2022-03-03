@@ -37,18 +37,19 @@ class PodcastDetailViewController: UIViewController {
         let label = UILabel()
         label.text = "TED Talks Daily"
         label.textColor = .white
-        label.font = UIFont.boldSystemFont(ofSize: 15)
+        label.font = UIFont.boldSystemFont(ofSize: 17)
         return label
     }()
     
     private let detailText: UITextView = {
        let textview = UITextView()
-        textview.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda"
+        textview.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sin id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda"
         textview.textColor = .white
         textview.backgroundColor = .clear
-        textview.font = UIFont.systemFont(ofSize: 15)
+        textview.font = UIFont.systemFont(ofSize: 17)
         textview.isEditable = false
         textview.isSelectable = false
+        textview.isScrollEnabled = false
         return textview
     }()
     
@@ -62,17 +63,14 @@ class PodcastDetailViewController: UIViewController {
         super.viewDidLoad()
        
         tableView.register(PodcastDetailViewCell.self, forCellReuseIdentifier: PodcastDetailViewCell.identifier)
-        
         tableView.dataSource = self
         tableView.delegate = self
         
         navigationController?.navigationBar.isHidden = false
-        
-        
+        navigationController?.navigationBar.topItem?.backButtonTitle = "TED 팟 캐스트"
+        navigationController?.navigationBar.tintColor = .white
         makeLayout()
  
-        
-        
     }
     
     //MARK: - Helper Function
@@ -93,8 +91,7 @@ class PodcastDetailViewController: UIViewController {
         detailText.anchor(top: detailImage.bottomAnchor,left: detailView.leadingAnchor,bottom: detailView.bottomAnchor,right: detailView.trailingAnchor,paddingTop: 20,paddingLeft: 10,paddingBottom: 20,paddingRight: 10)
         
         
-        navigationController?.navigationBar.topItem?.backButtonTitle = "TED 팟 캐스트"
-        navigationController?.navigationBar.tintColor = .white
+
         
        
     }
@@ -110,13 +107,11 @@ extension PodcastDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 30
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PodcastDetailViewCell.identifier, for: indexPath) as? PodcastDetailViewCell else { return UITableViewCell() }
-        cell.backgroundColor = .backgroundColor
-        cell.selectionStyle = .none
         return cell
     }
     
@@ -141,6 +136,11 @@ extension PodcastDetailViewController: UITableViewDelegate {
     }
     
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.pushViewController(PodcastPlayViewController(), animated: true)
+        
+    }
+    
     }
 
 
@@ -152,6 +152,7 @@ class PodcastDetailViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.backgroundColor = .clear
         cellSetting()
     }
 
@@ -171,31 +172,31 @@ class PodcastDetailViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "강의 제목"
+        label.text = "To future generations of women, you are the awqeqwewqrewtertert"
         label.textColor = .white
-        label.font = .systemFont(ofSize: 10)
+        label.font = .systemFont(ofSize: 14)
         return label
     }()
     
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = "강의 시간   강의 나온 시간"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 10)
+        label.text = "15:07  14 November 2020"
+        label.textColor = .lightGray
+        label.font = .systemFont(ofSize: 12)
         return label
     }()
     
     
     func cellSetting() {
        addSubview(cellImage)
-        cellImage.anchor(left: self.leadingAnchor,paddingLeft: 10,width: 20, height: 30)
+        cellImage.anchor(left: self.leadingAnchor,paddingLeft: 10,width: 20, height: 25)
         cellImage.centerY(inView: self)
     
         addSubview(nameLabel)
-        nameLabel.anchor(left: cellImage.trailingAnchor,bottom: cellImage.topAnchor,paddingLeft: 5,paddingBottom: -8)
+        nameLabel.anchor(left: cellImage.trailingAnchor,bottom: cellImage.topAnchor,right: self.trailingAnchor,paddingLeft: 20,paddingBottom: -10,paddingRight: 10)
         
         addSubview(timeLabel)
-        timeLabel.anchor(top: nameLabel.bottomAnchor,left: cellImage.trailingAnchor, paddingTop: 10,paddingLeft: 5)
+        timeLabel.anchor(top: cellImage.bottomAnchor,left: cellImage.trailingAnchor, paddingTop: -10,paddingLeft: 20)
     }
     
 }
