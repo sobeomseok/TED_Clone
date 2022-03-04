@@ -42,11 +42,14 @@ class HomeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        navigationController?.navigationBar.isHidden = true
-
+        view.backgroundColor = UIColor.backgroundColor
         
         setUpCollectionView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
     }
 
     private func setUpCollectionView() {
@@ -126,6 +129,12 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         }
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let vc = HomeDetailViewController()
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
