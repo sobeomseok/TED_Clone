@@ -13,10 +13,7 @@ class PodcastViewController: UICollectionViewController {
     
     
     //MARK: - Properties
- 
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -85,6 +82,7 @@ private func configureUI() {
 
 
 //MARK: - 컬렉션뷰 셀 레이아웃
+//컴포지셔널 레이아웃으로도 해보기
 extension PodcastViewController: UICollectionViewDelegateFlowLayout {
     //컬렉션뷰셀의 너비와 높이 조정 메서드입니다.
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

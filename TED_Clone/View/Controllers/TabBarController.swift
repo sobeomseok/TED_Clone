@@ -28,9 +28,8 @@ class TabBarController: UITabBarController {
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
         nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "headphones"), tag: 2)
-        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 3)
-        nav4.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 4)
-        
+        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "magnifyingglass"), tag: 3)
+        nav4.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 4)
         setViewControllers([nav1, nav2, nav3, nav4], animated: false)
     }
 }

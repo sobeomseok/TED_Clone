@@ -41,18 +41,23 @@ class PodcastDetailViewController: UIViewController {
         return label
     }()
     
-    private let detailText: UITextView = {
-       let textview = UITextView()
-        textview.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sin id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda"
+    
+    private let detailText: UILabel = {
+       let textview = UILabel()
+        textview.text = "Lorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er elLorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er elLorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er el"
         textview.textColor = .white
+        textview.numberOfLines = 0
         textview.backgroundColor = .clear
         textview.font = UIFont.systemFont(ofSize: 17)
-        textview.isEditable = false
-        textview.isSelectable = false
-        textview.isScrollEnabled = false
         return textview
     }()
     
+
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tabBarController?.tabBar.isHidden = false
+    }
     
     
     
@@ -61,7 +66,6 @@ class PodcastDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         tableView.register(PodcastDetailViewCell.self, forCellReuseIdentifier: PodcastDetailViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
@@ -70,16 +74,18 @@ class PodcastDetailViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backButtonTitle = "TED 팟 캐스트"
         navigationController?.navigationBar.tintColor = .white
         makeLayout()
- 
     }
     
     //MARK: - Helper Function
     private func makeLayout() {
+        let newSize = detailText.sizeThatFits(view.frame.size)
+        detailText.frame.size = newSize
+        
         view.addSubview(tableView)
         tableView.frame = view.frame
         
         tableView.addSubview(detailView)
-        detailView.anchor(width: view.frame.width, height: 400)
+        detailView.anchor(width: view.frame.width, height: 220 + detailText.frame.size.height)
         
         detailView.addSubview(detailImage)
         detailImage.anchor(top: detailView.topAnchor,left: detailView.leadingAnchor,paddingTop: 20,paddingLeft: 10,width: 150,height: 150)
@@ -87,13 +93,11 @@ class PodcastDetailViewController: UIViewController {
         detailView.addSubview(detailLabel)
         detailLabel.anchor(left: detailImage.trailingAnchor, bottom: detailImage.bottomAnchor,right: detailView.trailingAnchor, paddingLeft: 10,paddingRight: 20)
         
+        
+        
         detailView.addSubview(detailText)
-        detailText.anchor(top: detailImage.bottomAnchor,left: detailView.leadingAnchor,bottom: detailView.bottomAnchor,right: detailView.trailingAnchor,paddingTop: 20,paddingLeft: 10,paddingBottom: 20,paddingRight: 10)
+        detailText.anchor(top: detailImage.bottomAnchor,left: detailView.leadingAnchor,right: detailView.trailingAnchor,paddingTop: 20,paddingLeft: 10,paddingRight: 10)
         
-        
-
-        
-       
     }
 
 
@@ -123,6 +127,7 @@ extension PodcastDetailViewController: UITableViewDataSource {
 //MARK: - 테이블뷰 델리게이터
 
 extension PodcastDetailViewController: UITableViewDelegate {
+    //다이나믹셀 검색
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
     }
@@ -138,10 +143,8 @@ extension PodcastDetailViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         navigationController?.pushViewController(PodcastPlayViewController(), animated: true)
-        
     }
-    
-    }
+}
 
 
 

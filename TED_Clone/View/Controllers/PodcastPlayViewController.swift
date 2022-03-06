@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class PodcastPlayViewController: UIViewController {
 
     //MARK: - Properties
@@ -106,11 +107,7 @@ class PodcastPlayViewController: UIViewController {
         stack.axis = .horizontal
         return stack
     }()
-    
-    private let navigationButton: UIBarButtonItem = {
-        let button = UIBarButtonItem(image: UIImage(systemName: "chevron.down"), style: .plain, target: self, action: nil)
-        return button
-    }()
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +128,7 @@ class PodcastPlayViewController: UIViewController {
     
     func makeLayout() {
         view.addSubview(detailImage)
-        detailImage.anchor(top:view.safeAreaLayoutGuide.topAnchor,left:view.leadingAnchor,paddingTop: 50,paddingLeft: 10,width: 150,height: 150)
+        detailImage.anchor(top:view.safeAreaLayoutGuide.topAnchor,left:view.leadingAnchor,paddingTop: 30,paddingLeft: 10,width: 150,height: 150)
         
         
         view.addSubview(nameLabel)
@@ -142,12 +139,11 @@ class PodcastPlayViewController: UIViewController {
         
         sliderBar.anchor(width:view.frame.width - 150)
         view.addSubview(timeStack)
-        timeStack.anchor(top: detailText.bottomAnchor,left: view.leadingAnchor,right: view.trailingAnchor,paddingTop: 80,paddingLeft: 10,paddingRight: 10)
+        timeStack.anchor(top: detailText.bottomAnchor,left: view.leadingAnchor,right: view.trailingAnchor,paddingTop: 60,paddingLeft: 10,paddingRight: 10)
     
         view.addSubview(buttonStack)
         buttonStack.anchor(top: timeStack.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 100,paddingBottom: 50)
         buttonStack.centerX(inView: view)
-
     }
 
 }

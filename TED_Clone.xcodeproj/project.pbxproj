@@ -21,6 +21,7 @@
 		FEA0EF3227CE57A200108D67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EF3127CE57A200108D67 /* extension.swift */; };
 		FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */; };
 		FEA0EFAE27D0732800108D67 /* PodcastPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */; };
+		FEE89B8227D3653100876F11 /* DetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FEE89B8127D3653100876F11 /* DetailView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		FEA0EF3127CE57A200108D67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewController.swift; sourceTree = "<group>"; };
 		FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayViewController.swift; sourceTree = "<group>"; };
+		FEE89B8127D3653100876F11 /* DetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				A9216E4B27CE44D300DB0838 /* LaunchScreen.storyboard */,
+				FEE89B8127D3653100876F11 /* DetailView.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -163,6 +166,8 @@
 			dependencies = (
 			);
 			name = TED_Clone;
+			packageProductDependencies = (
+			);
 			productName = TED_Clone;
 			productReference = A9216E3D27CE44D200DB0838 /* TED_Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -191,6 +196,8 @@
 				Base,
 			);
 			mainGroup = A9216E3427CE44D200DB0838;
+			packageReferences = (
+			);
 			productRefGroup = A9216E3E27CE44D200DB0838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -205,6 +212,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FEE89B8227D3653100876F11 /* DetailView.xib in Resources */,
 				A9216E4D27CE44D300DB0838 /* LaunchScreen.storyboard in Resources */,
 				A9216E4A27CE44D300DB0838 /* Assets.xcassets in Resources */,
 			);
