@@ -50,4 +50,11 @@ extension UIView {
     func centerY(inView view: UIView, constant: CGFloat = 0) {
         centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: constant).isActive = true
     }
+    
+    /// 서브뷰 한 번에 추가하는 함수
+    func addSubViews(_ views: UIView...) {
+        views.forEach {
+            addSubview($0)
+        }
+    }
 }
