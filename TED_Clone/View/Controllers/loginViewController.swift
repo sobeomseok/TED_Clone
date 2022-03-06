@@ -8,7 +8,7 @@
 import UIKit
 
 final class loginViewController: UIViewController {
-    //w2d2d23d23d3
+    // MARK: - 로그인 가이드
     private lazy var loginGuideLabel: UILabel = {
         let label = UILabel()
         label.text = "Sign in to TED"
