@@ -19,6 +19,15 @@
 		A9216E6127CE52F200DB0838 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6027CE52F100DB0838 /* ProfileViewController.swift */; };
 		A9216E6327CE549200DB0838 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6227CE549200DB0838 /* Model.swift */; };
 		A9216E6527CE549900DB0838 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E6427CE549900DB0838 /* ViewModel.swift */; };
+		A9216E8927CF9F4E00DB0838 /* SubSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E8827CF9F4E00DB0838 /* SubSectionCollectionViewCell.swift */; };
+		A9216E8B27CFBFAF00DB0838 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E8A27CFBFAF00DB0838 /* SectionHeader.swift */; };
+		A9216E8D27D0775A00DB0838 /* AppTitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E8C27D0775A00DB0838 /* AppTitleCollectionViewCell.swift */; };
+		A9216E9127D0796D00DB0838 /* HomeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E9027D0796D00DB0838 /* HomeDetailViewController.swift */; };
+		A9216E9327D0887600DB0838 /* FirstSectionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E9227D0887600DB0838 /* FirstSectionCollectionViewCell.swift */; };
+		A9D8CAD027D2372200552627 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CACF27D2372200552627 /* MainTableViewCell.swift */; };
+		A9D8CAD227D2572500552627 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD127D2572500552627 /* DetailsTableViewCell.swift */; };
+		A9D8CAD427D262FB00552627 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD327D262FB00552627 /* ProfileTableViewCell.swift */; };
+		A9D8CAD827D3B5D800552627 /* WatchNextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD727D3B5D800552627 /* WatchNextTableViewCell.swift */; };
 		FEA0EF3227CE57A200108D67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EF3127CE57A200108D67 /* extension.swift */; };
 		FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */; };
 		FEA0EFAE27D0732800108D67 /* PodcastPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */; };
@@ -39,6 +48,15 @@
 		A9216E6027CE52F100DB0838 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		A9216E6227CE549200DB0838 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		A9216E6427CE549900DB0838 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		A9216E8827CF9F4E00DB0838 /* SubSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9216E8A27CFBFAF00DB0838 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		A9216E8C27D0775A00DB0838 /* AppTitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9216E9027D0796D00DB0838 /* HomeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDetailViewController.swift; sourceTree = "<group>"; };
+		A9216E9227D0887600DB0838 /* FirstSectionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSectionCollectionViewCell.swift; sourceTree = "<group>"; };
+		A9D8CACF27D2372200552627 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		A9D8CAD127D2572500552627 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
+		A9D8CAD327D262FB00552627 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		A9D8CAD727D3B5D800552627 /* WatchNextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNextTableViewCell.swift; sourceTree = "<group>"; };
 		FEA0EF3127CE57A200108D67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewController.swift; sourceTree = "<group>"; };
 		FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayViewController.swift; sourceTree = "<group>"; };
@@ -96,8 +114,8 @@
 		A9216E5527CE4FD200DB0838 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A9216E8627CF9D2800DB0838 /* Home */,
 				471C68BC27D31E4D00B12B71 /* loginViewController.swift */,
-				A9216E4427CE44D200DB0838 /* HomeViewController.swift */,
 				A9216E5C27CE52D100DB0838 /* PodcastViewController.swift */,
 				FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */,
 				FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */,
@@ -111,6 +129,7 @@
 		A9216E5627CE4FDE00DB0838 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9216E8727CF9D4900DB0838 /* Home */,
 				A9216E4B27CE44D300DB0838 /* LaunchScreen.storyboard */,
 			);
 			path = Views;
@@ -140,6 +159,38 @@
 				A9216E4227CE44D200DB0838 /* SceneDelegate.swift */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		A9216E8627CF9D2800DB0838 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A9216E4427CE44D200DB0838 /* HomeViewController.swift */,
+				A9216E9027D0796D00DB0838 /* HomeDetailViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A9216E8727CF9D4900DB0838 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				A9216E8827CF9F4E00DB0838 /* SubSectionCollectionViewCell.swift */,
+				A9216E9227D0887600DB0838 /* FirstSectionCollectionViewCell.swift */,
+				A9216E8C27D0775A00DB0838 /* AppTitleCollectionViewCell.swift */,
+				A9216E8A27CFBFAF00DB0838 /* SectionHeader.swift */,
+				A9D8CACE27D236F900552627 /* Detail */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		A9D8CACE27D236F900552627 /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				A9D8CACF27D2372200552627 /* MainTableViewCell.swift */,
+				A9D8CAD127D2572500552627 /* DetailsTableViewCell.swift */,
+				A9D8CAD327D262FB00552627 /* ProfileTableViewCell.swift */,
+				A9D8CAD727D3B5D800552627 /* WatchNextTableViewCell.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		FEA0EF2F27CE577F00108D67 /* Utils */ = {
@@ -227,14 +278,23 @@
 				A9216E5F27CE52EB00DB0838 /* SearchViewController.swift in Sources */,
 				471C68BD27D31E4D00B12B71 /* loginViewController.swift in Sources */,
 				A9216E6527CE549900DB0838 /* ViewModel.swift in Sources */,
+				A9216E9327D0887600DB0838 /* FirstSectionCollectionViewCell.swift in Sources */,
 				A9216E4527CE44D200DB0838 /* HomeViewController.swift in Sources */,
 				FEA0EF3227CE57A200108D67 /* extension.swift in Sources */,
+				A9D8CAD027D2372200552627 /* MainTableViewCell.swift in Sources */,
+				A9D8CAD427D262FB00552627 /* ProfileTableViewCell.swift in Sources */,
 				A9216E5B27CE509A00DB0838 /* TabBarController.swift in Sources */,
 				FEA0EFAE27D0732800108D67 /* PodcastPlayViewController.swift in Sources */,
 				A9216E5D27CE52D100DB0838 /* PodcastViewController.swift in Sources */,
+				A9216E8927CF9F4E00DB0838 /* SubSectionCollectionViewCell.swift in Sources */,
 				A9216E6127CE52F200DB0838 /* ProfileViewController.swift in Sources */,
+				A9216E8D27D0775A00DB0838 /* AppTitleCollectionViewCell.swift in Sources */,
+				A9D8CAD227D2572500552627 /* DetailsTableViewCell.swift in Sources */,
+				A9216E8B27CFBFAF00DB0838 /* SectionHeader.swift in Sources */,
 				A9216E4127CE44D200DB0838 /* AppDelegate.swift in Sources */,
+				A9D8CAD827D3B5D800552627 /* WatchNextTableViewCell.swift in Sources */,
 				A9216E4327CE44D200DB0838 /* SceneDelegate.swift in Sources */,
+				A9216E9127D0796D00DB0838 /* HomeDetailViewController.swift in Sources */,
 				FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */,
 				A9216E6327CE549200DB0838 /* Model.swift in Sources */,
 			);
