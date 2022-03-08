@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220DDA035B5E35AD32C20FEE /* Pods_TED_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EF4D94F1CB3A25FA0ED6D4E /* Pods_TED_Clone.framework */; };
 		471C68BD27D31E4D00B12B71 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C68BC27D31E4D00B12B71 /* loginViewController.swift */; };
 		A9216E4127CE44D200DB0838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E4027CE44D200DB0838 /* AppDelegate.swift */; };
 		A9216E4327CE44D200DB0838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E4227CE44D200DB0838 /* SceneDelegate.swift */; };
@@ -28,12 +29,15 @@
 		A9D8CAD227D2572500552627 /* DetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD127D2572500552627 /* DetailsTableViewCell.swift */; };
 		A9D8CAD427D262FB00552627 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD327D262FB00552627 /* ProfileTableViewCell.swift */; };
 		A9D8CAD827D3B5D800552627 /* WatchNextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9D8CAD727D3B5D800552627 /* WatchNextTableViewCell.swift */; };
+		FE848A9427D70D350023C69C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FE848A9327D70D350023C69C /* GoogleService-Info.plist */; };
 		FEA0EF3227CE57A200108D67 /* extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EF3127CE57A200108D67 /* extension.swift */; };
 		FEA0EFAC27CF86BF00108D67 /* PodcastDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */; };
 		FEA0EFAE27D0732800108D67 /* PodcastPlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2CD14BE429E1C8F98DB22B9A /* Pods-TED_Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TED_Clone.debug.xcconfig"; path = "Target Support Files/Pods-TED_Clone/Pods-TED_Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		3EF4D94F1CB3A25FA0ED6D4E /* Pods_TED_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TED_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		471C68BC27D31E4D00B12B71 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
 		A9216E3D27CE44D200DB0838 /* TED_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TED_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9216E4027CE44D200DB0838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		A9D8CAD127D2572500552627 /* DetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsTableViewCell.swift; sourceTree = "<group>"; };
 		A9D8CAD327D262FB00552627 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		A9D8CAD727D3B5D800552627 /* WatchNextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchNextTableViewCell.swift; sourceTree = "<group>"; };
+		D746684CC12A0B89B02F4BCC /* Pods-TED_Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TED_Clone.release.xcconfig"; path = "Target Support Files/Pods-TED_Clone/Pods-TED_Clone.release.xcconfig"; sourceTree = "<group>"; };
+		FE848A9327D70D350023C69C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		FEA0EF3127CE57A200108D67 /* extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extension.swift; sourceTree = "<group>"; };
 		FEA0EFAB27CF86BF00108D67 /* PodcastDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastDetailViewController.swift; sourceTree = "<group>"; };
 		FEA0EFAD27D0732800108D67 /* PodcastPlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastPlayViewController.swift; sourceTree = "<group>"; };
@@ -67,17 +73,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				220DDA035B5E35AD32C20FEE /* Pods_TED_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9CE84486A76B59541B43FE85 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2CD14BE429E1C8F98DB22B9A /* Pods-TED_Clone.debug.xcconfig */,
+				D746684CC12A0B89B02F4BCC /* Pods-TED_Clone.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A9216E3427CE44D200DB0838 = {
 			isa = PBXGroup;
 			children = (
 				A9216E3F27CE44D200DB0838 /* TED_Clone */,
 				A9216E3E27CE44D200DB0838 /* Products */,
+				9CE84486A76B59541B43FE85 /* Pods */,
+				C03A38E1D4E425F4B9ADF1DE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,6 +116,7 @@
 				A9216E5727CE4FE300DB0838 /* ViewModel */,
 				A9216E5427CE4FC200DB0838 /* View */,
 				A9216E4E27CE44D300DB0838 /* Info.plist */,
+				FE848A9327D70D350023C69C /* GoogleService-Info.plist */,
 			);
 			path = TED_Clone;
 			sourceTree = "<group>";
@@ -193,6 +212,14 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C03A38E1D4E425F4B9ADF1DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3EF4D94F1CB3A25FA0ED6D4E /* Pods_TED_Clone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		FEA0EF2F27CE577F00108D67 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,17 +235,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9216E5127CE44D300DB0838 /* Build configuration list for PBXNativeTarget "TED_Clone" */;
 			buildPhases = (
+				9AECEBFE27FD187FB0DD9F60 /* [CP] Check Pods Manifest.lock */,
 				A9216E3927CE44D200DB0838 /* Sources */,
 				A9216E3A27CE44D200DB0838 /* Frameworks */,
 				A9216E3B27CE44D200DB0838 /* Resources */,
+				3C53AFE8976438D21538A981 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TED_Clone;
-			packageProductDependencies = (
-			);
 			productName = TED_Clone;
 			productReference = A9216E3D27CE44D200DB0838 /* TED_Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -247,8 +274,6 @@
 				Base,
 			);
 			mainGroup = A9216E3427CE44D200DB0838;
-			packageReferences = (
-			);
 			productRefGroup = A9216E3E27CE44D200DB0838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -265,10 +290,53 @@
 			files = (
 				A9216E4D27CE44D300DB0838 /* LaunchScreen.storyboard in Resources */,
 				A9216E4A27CE44D300DB0838 /* Assets.xcassets in Resources */,
+				FE848A9427D70D350023C69C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C53AFE8976438D21538A981 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9AECEBFE27FD187FB0DD9F60 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TED_Clone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9216E3927CE44D200DB0838 /* Sources */ = {
@@ -432,6 +500,7 @@
 		};
 		A9216E5227CE44D300DB0838 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2CD14BE429E1C8F98DB22B9A /* Pods-TED_Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -461,6 +530,7 @@
 		};
 		A9216E5327CE44D300DB0838 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D746684CC12A0B89B02F4BCC /* Pods-TED_Clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
