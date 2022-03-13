@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "loadingimage.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "스크린샷 2022-03-02 오후 1.21.04.png",
       "idiom" : "universal",
       "scale" : "2x"
     },

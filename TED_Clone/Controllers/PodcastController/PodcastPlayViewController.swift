@@ -6,21 +6,29 @@
 //
 
 import UIKit
-
+import AVKit
 
 class PodcastPlayViewController: UIViewController {
-
+    var player: AVPlayer!
+    var playerItem: AVPlayerItem!
+    var playerItemContext = 0
+    var playBool = true
+    
+    static var selectedNum = 0
+    
+    static var mp3SelectedNum = 0
+    
     //MARK: - Properties
     
     private let detailImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "PodcastImage1")
+        image.image = PodcastViewModel.imageList[selectedNum].image
         return image
     }()
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "To future generations of women, you are the name of star good hi name short"
+        label.text = PodcastViewModel.mp3NameList[mp3SelectedNum]
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 18)
         label.numberOfLines = 0
@@ -48,7 +56,7 @@ class PodcastPlayViewController: UIViewController {
     
     private let andTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "30:00"
+        label.text = PodcastViewModel.mp3RunTimeList[mp3SelectedNum]
         label.textColor = .white
         label.font = .boldSystemFont(ofSize: 17)
         return label
@@ -57,7 +65,7 @@ class PodcastPlayViewController: UIViewController {
     
     private let detailText: UITextView = {
        let textview = UITextView()
-        textview.text = "Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate met, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco "
+        textview.text = PodcastViewModel.mp3DetailText[mp3SelectedNum]
         textview.textColor = .white
         textview.backgroundColor = .clear
         textview.font = UIFont.systemFont(ofSize: 17)
@@ -80,6 +88,7 @@ class PodcastPlayViewController: UIViewController {
         button.setImage(UIImage(systemName: "arrowtriangle.forward.circle"), for: .normal)
         button.tintColor = .white
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 50), forImageIn: .normal)
+        button.addTarget(self, action: #selector(playSound), for: .touchUpInside)
         return button
     }()
     
@@ -107,6 +116,15 @@ class PodcastPlayViewController: UIViewController {
         stack.axis = .horizontal
         return stack
     }()
+    
+    private let indicatorView: UIActivityIndicatorView = {
+        let ai = UIActivityIndicatorView()
+        ai.style = .large
+        ai.color = .white
+        ai.startAnimating()
+        ai.backgroundColor = .backgroundColor
+        return ai
+    }()
         
     
     override func viewDidLoad() {
@@ -116,8 +134,7 @@ class PodcastPlayViewController: UIViewController {
         
         navigationController?.navigationBar.topItem?.title = ""
         makeLayout()
-        
-        
+        playMP3()
     }
     
     
@@ -144,9 +161,69 @@ class PodcastPlayViewController: UIViewController {
         view.addSubview(buttonStack)
         buttonStack.anchor(top: timeStack.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 100,paddingBottom: 50)
         buttonStack.centerX(inView: view)
+        
+        view.addSubview(indicatorView)
+        indicatorView.anchor(width: view.frame.width, height: view.frame.height)
     }
 
+    
+    func playMP3() {
+        let url = URL(string: PodcastViewModel.mp3URLList[PodcastPlayViewController.mp3SelectedNum])
+        playerItem = AVPlayerItem(url: url!)
+        playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &playerItemContext)
+        player = AVPlayer(playerItem: playerItem)
+        player.play()
+        timeButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+    }
+    
+    @objc func playSound() {
+        if playBool {
+            player.pause()
+            playBool = false
+            timeButton.setImage(UIImage(systemName: "arrowtriangle.forward.circle"), for: .normal)
+        } else {
+            player.play()
+            playBool = true
+            timeButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+        }
+    }
+    
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        guard context == &playerItemContext else {
+            super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+            return
+        }
+        
+        if keyPath == #keyPath(AVPlayerItem.status) {
+            let status: AVPlayerItem.Status
+            if let statusNumber = change?[.newKey] as? NSNumber {
+                status = AVPlayerItem.Status(rawValue: statusNumber.intValue)!
+            } else {
+                status = .unknown
+            }
+            
+            switch status {
+            case .readyToPlay:
+                print("qwqweq")
+                indicatorView.stopAnimating()
+                indicatorView.isHidden = true
+            case .failed:
+                print("재생에 실패하얐습니다.")
+            case .unknown:
+                print("재생할 아이템이없습니다.")
+            @unknown default:
+                break
+            }
+
+        }
+    }
+    
+    
+    
+    
 }
+
 
 
 
