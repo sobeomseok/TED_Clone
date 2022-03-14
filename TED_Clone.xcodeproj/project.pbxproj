@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		471C68BD27D31E4D00B12B71 /* loginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471C68BC27D31E4D00B12B71 /* loginViewController.swift */; };
+		62DF79B74250096F21A6EF75 /* Pods_TED_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F5D4A406D77E7C1C5ABABC0 /* Pods_TED_Clone.framework */; };
 		A9216E4127CE44D200DB0838 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E4027CE44D200DB0838 /* AppDelegate.swift */; };
 		A9216E4327CE44D200DB0838 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E4227CE44D200DB0838 /* SceneDelegate.swift */; };
 		A9216E4527CE44D200DB0838 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9216E4427CE44D200DB0838 /* HomeViewController.swift */; };
@@ -43,6 +44,9 @@
 
 /* Begin PBXFileReference section */
 		471C68BC27D31E4D00B12B71 /* loginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginViewController.swift; sourceTree = "<group>"; };
+		6F5D4A406D77E7C1C5ABABC0 /* Pods_TED_Clone.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TED_Clone.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A836052D774241AD7D88AED /* Pods-TED_Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TED_Clone.debug.xcconfig"; path = "Target Support Files/Pods-TED_Clone/Pods-TED_Clone.debug.xcconfig"; sourceTree = "<group>"; };
+		97B7C44A34A31E6FF45D846B /* Pods-TED_Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TED_Clone.release.xcconfig"; path = "Target Support Files/Pods-TED_Clone/Pods-TED_Clone.release.xcconfig"; sourceTree = "<group>"; };
 		A9216E3D27CE44D200DB0838 /* TED_Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TED_Clone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9216E4027CE44D200DB0838 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A9216E4227CE44D200DB0838 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,17 +87,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62DF79B74250096F21A6EF75 /* Pods_TED_Clone.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A8C29886AB02E9C5B29CD42 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F5D4A406D77E7C1C5ABABC0 /* Pods_TED_Clone.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		A9216E3427CE44D200DB0838 = {
 			isa = PBXGroup;
 			children = (
 				A9216E3F27CE44D200DB0838 /* TED_Clone */,
 				A9216E3E27CE44D200DB0838 /* Products */,
+				C19B89EACFFFD4C42B82183D /* Pods */,
+				0A8C29886AB02E9C5B29CD42 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -211,6 +226,16 @@
 			path = Detail;
 			sourceTree = "<group>";
 		};
+		C19B89EACFFFD4C42B82183D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7A836052D774241AD7D88AED /* Pods-TED_Clone.debug.xcconfig */,
+				97B7C44A34A31E6FF45D846B /* Pods-TED_Clone.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FE50F05E27DC6F21005F7223 /* PodcastController */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,17 +297,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9216E5127CE44D300DB0838 /* Build configuration list for PBXNativeTarget "TED_Clone" */;
 			buildPhases = (
+				04FFD08918CD7677E9AC0E7E /* [CP] Check Pods Manifest.lock */,
 				A9216E3927CE44D200DB0838 /* Sources */,
 				A9216E3A27CE44D200DB0838 /* Frameworks */,
 				A9216E3B27CE44D200DB0838 /* Resources */,
+				D12971394A07860CC34AA059 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = TED_Clone;
-			packageProductDependencies = (
-			);
 			productName = TED_Clone;
 			productReference = A9216E3D27CE44D200DB0838 /* TED_Clone.app */;
 			productType = "com.apple.product-type.application";
@@ -311,8 +336,6 @@
 				Base,
 			);
 			mainGroup = A9216E3427CE44D200DB0838;
-			packageReferences = (
-			);
 			productRefGroup = A9216E3E27CE44D200DB0838 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -334,6 +357,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		04FFD08918CD7677E9AC0E7E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TED_Clone-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D12971394A07860CC34AA059 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TED_Clone/Pods-TED_Clone-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9216E3927CE44D200DB0838 /* Sources */ = {
@@ -504,6 +569,7 @@
 		};
 		A9216E5227CE44D300DB0838 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A836052D774241AD7D88AED /* Pods-TED_Clone.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -533,6 +599,7 @@
 		};
 		A9216E5327CE44D300DB0838 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 97B7C44A34A31E6FF45D846B /* Pods-TED_Clone.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
