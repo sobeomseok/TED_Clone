@@ -9,7 +9,7 @@ import UIKit
 
 //MARK: - 셀 커스텀
 class PodCastCollectionViewCell: UICollectionViewCell {
-  
+    
     
     
     //indentifier의 실수를 방지하기 위해 변수로 만듭것입니다.
@@ -26,16 +26,16 @@ class PodCastCollectionViewCell: UICollectionViewCell {
     
     
     var imageView: UIImageView = {
-       let img = UIImageView()
+        let img = UIImageView()
         img.contentMode = .scaleAspectFill
-       return img
+        return img
     }()
     
-     let labelView: UILabel = {
+    let labelView: UILabel = {
         let label = UILabel()
         label.textColor = .lightGray
         label.text = ""
-         label.numberOfLines = 0
+        label.numberOfLines = 0
         label.font = .systemFont(ofSize: 15)
         return label
     }()
@@ -81,8 +81,8 @@ class CollectionReusableView: UICollectionReusableView {
         return label
     }()
     
-   private func headerSetting() {
-       addSubview(labelView)
-       labelView.anchor(top: self.topAnchor, left: self.leadingAnchor, bottom: self.bottomAnchor, right: self.trailingAnchor,paddingLeft: 20,paddingBottom: 20)
+    private func headerSetting() {
+        addSubview(labelView)
+        labelView.anchor(top: self.topAnchor, left: self.leadingAnchor, bottom: self.bottomAnchor, right: self.trailingAnchor,paddingLeft: 20,paddingBottom: 20)
     }
 }

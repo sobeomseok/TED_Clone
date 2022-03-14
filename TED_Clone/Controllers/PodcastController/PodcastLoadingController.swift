@@ -9,6 +9,14 @@ import UIKit
 
 class PodcastLoadingController: UIViewController {
 
+    var num: Int = 0 {
+        didSet {
+            if num == PodcastViewModel.imageList.count {
+                pushViewcontroller()
+            }
+        }
+    }
+    
     //MARK: - 속성
     let imageView: UIImageView = {
        let iv = UIImageView()
@@ -19,10 +27,17 @@ class PodcastLoadingController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        PodcastViewModel.fetch { num in
+            self.num += num
+        }
+        PodcastViewModel.mp3Fetch()
         view.addSubview(imageView)
         imageView.anchor(width: view.frame.width, height: view.frame.height)
     }
     
 
+    func pushViewcontroller() {
+        navigationController?.pushViewController(PodcastViewController(collectionViewLayout: UICollectionViewFlowLayout()), animated: true)
+    }
 
 }

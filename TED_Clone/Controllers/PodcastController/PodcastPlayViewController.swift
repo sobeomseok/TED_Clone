@@ -9,14 +9,18 @@ import UIKit
 import AVKit
 
 class PodcastPlayViewController: UIViewController {
+//    var timer: Timer!
     var player: AVPlayer!
     var playerItem: AVPlayerItem!
     var playerItemContext = 0
     var playBool = true
     
+    //이건 이미지의 서브스크립트 값을 알아 내기위한것.
     static var selectedNum = 0
     
+    //이건 테이블뷰의 indexpath값을 저장한것
     static var mp3SelectedNum = 0
+    
     
     //MARK: - Properties
     
@@ -38,27 +42,27 @@ class PodcastPlayViewController: UIViewController {
     private let sliderBar: UISlider = {
         let slider = UISlider()
         slider.minimumTrackTintColor = .red
-        slider.maximumValue = 255
         slider.minimumValue = 0
         let image = UIImage(systemName: "circlebadge.fill")
         let imageColor = image?.imageWithColor(color: UIColor.red)
         slider.setThumbImage(imageColor, for: .normal)
+        guard let value = Float(PodcastViewModel.mp3RunTimeList[mp3SelectedNum]) else {return slider}
+        slider.maximumValue = value
+        slider.addTarget(self, action: #selector(sliderDidChange), for: .valueChanged)
         return slider
     }()
     
     private let TimeLabel: UILabel = {
         let label = UILabel()
-        label.text = "00:00"
+        label.attributedText = NSAttributedString(string: "0:00")
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 17)
         return label
     }()
     
     private let andTimeLabel: UILabel = {
         let label = UILabel()
-        label.text = PodcastViewModel.mp3RunTimeList[mp3SelectedNum]
+        label.attributedText = PodcastViewModel.timeFetch(num: PodcastViewModel.mp3RunTimeList[mp3SelectedNum], string: nil, size: 17)
         label.textColor = .white
-        label.font = .boldSystemFont(ofSize: 17)
         return label
     }()
     
@@ -97,6 +101,7 @@ class PodcastPlayViewController: UIViewController {
         button.setImage(UIImage(systemName: "gobackward.15"), for: .normal)
         button.tintColor = .white
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 32), forImageIn: .normal)
+        button.addTarget(self, action: #selector(backwardButtonClick), for: .touchUpInside)
         return button
     }()
     
@@ -105,6 +110,7 @@ class PodcastPlayViewController: UIViewController {
         button.setImage(UIImage(systemName: "goforward.15"), for: .normal)
         button.tintColor = .white
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 32), forImageIn: .normal)
+        button.addTarget(self, action: #selector(gowardButtonClick), for: .touchUpInside)
         return button
     }()
     
@@ -131,19 +137,25 @@ class PodcastPlayViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         tabBarController?.tabBar.isHidden = true
-        
         navigationController?.navigationBar.topItem?.title = ""
         makeLayout()
         playMP3()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        playerItem.removeObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), context: &playerItemContext)
+        player.pause()
     }
     
     
     
 
     
-    //MARK: - Helper Function
+    //MARK: - 도움 메서드
     
-    func makeLayout() {
+   private func makeLayout() {
         view.addSubview(detailImage)
         detailImage.anchor(top:view.safeAreaLayoutGuide.topAnchor,left:view.leadingAnchor,paddingTop: 30,paddingLeft: 10,width: 150,height: 150)
         
@@ -159,37 +171,104 @@ class PodcastPlayViewController: UIViewController {
         timeStack.anchor(top: detailText.bottomAnchor,left: view.leadingAnchor,right: view.trailingAnchor,paddingTop: 60,paddingLeft: 10,paddingRight: 10)
     
         view.addSubview(buttonStack)
-        buttonStack.anchor(top: timeStack.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 100,paddingBottom: 50)
+        buttonStack.anchor(top: timeStack.bottomAnchor,bottom: view.bottomAnchor,paddingTop: 100,paddingBottom: 50,height: 60)
         buttonStack.centerX(inView: view)
         
         view.addSubview(indicatorView)
-        indicatorView.anchor(width: view.frame.width, height: view.frame.height)
+        indicatorView.anchor(top: detailText.bottomAnchor,bottom: view.safeAreaLayoutGuide.bottomAnchor,width: view.frame.width)
     }
-
     
-    func playMP3() {
+   private func playMP3() {
         let url = URL(string: PodcastViewModel.mp3URLList[PodcastPlayViewController.mp3SelectedNum])
         playerItem = AVPlayerItem(url: url!)
         playerItem.addObserver(self, forKeyPath: #keyPath(AVPlayerItem.status), options: [.old, .new], context: &playerItemContext)
         player = AVPlayer(playerItem: playerItem)
         player.play()
+       let interval = CMTime(value: 1, timescale: 1)
+       player.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.global()) { [self] time in
+           let seconds = CMTimeGetSeconds(time)
+           let intTime = Int(seconds)
+           let stringTime = String(intTime)
+           DispatchQueue.main.async {
+               TimeLabel.attributedText = PodcastViewModel.timeFetch(num: stringTime, string: nil, size: 17)
+               sliderBar.value = Float(intTime)
+               if sliderBar.value >= Float(Int(PodcastViewModel.mp3RunTimeList[PodcastPlayViewController.mp3SelectedNum])!) {
+                   playIfEnd()
+               }
+           }
+       }
         timeButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+       
     }
+    
+    func playIfEnd() {
+        player.pause()
+        timeButton.setImage(UIImage(systemName: "arrowtriangle.forward.circle"), for: .normal)
+        playBool = false
+    }
+    
+    //MARK: - 셀렉터 메서드
+  @objc func sliderDidChange() {
+      player.seek(to: CMTime(value: CMTimeValue(sliderBar.value), timescale: 1))
+      sliderBar.value = Float(CMTimeGetSeconds(player.currentTime()))
+      let stringValue = String(Int(sliderBar.value))
+      TimeLabel.attributedText = PodcastViewModel.timeFetch(num: stringValue, string: nil, size: 17)
+      //이부분의 조건문은 슬라이더바의 벨류가 0으로될때 곧 재생이 모두 끝났을때 어떤것을 변화를 줘야하는지의 시점을 알기위한 조건문이다.
+      if sliderBar.value >= Float(Int(PodcastViewModel.mp3RunTimeList[PodcastPlayViewController.mp3SelectedNum])!) {
+          playIfEnd()
+      }
+    }
+
     
     @objc func playSound() {
         if playBool {
-            player.pause()
-            playBool = false
-            timeButton.setImage(UIImage(systemName: "arrowtriangle.forward.circle"), for: .normal)
+            playIfEnd()
+
         } else {
+            //이부분의 조건문은 슬라이더바의 벨류가 0으로될때 곧 재생이 모두 끝났을때 다시 재생버튼을 누르는 시점을 알기위한 조건문이다.
+            if sliderBar.value >= Float(Int(PodcastViewModel.mp3RunTimeList[PodcastPlayViewController.mp3SelectedNum])!) {
+                sliderBar.value = Float(0)
+                playBool = true
+                timeButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+                player.seek(to: CMTime(value: 0, timescale: 1))
+                player.play()
+                TimeLabel.attributedText = NSAttributedString(string: "0:00")
+            } else {
             player.play()
             playBool = true
             timeButton.setImage(UIImage(systemName: "pause.circle"), for: .normal)
+            }
         }
     }
     
+    @objc func backwardButtonClick() {
+        let currentTime = player.currentTime()
+        player.seek(to: currentTime - CMTime(value: 15, timescale: 1))
+        sliderBar.value -= 15
+        let stringValue = String(Int(self.sliderBar.value))
+        self.TimeLabel.attributedText = PodcastViewModel.timeFetch(num: stringValue, string: nil, size: 17)
+        player.seek(to: CMTime(value: CMTimeValue(sliderBar.value), timescale: 1))
+    }
+    @objc func gowardButtonClick() {
+        let currentTime = player.currentTime()
+        player.seek(to: currentTime + CMTime(value: 15, timescale: 1))
+        sliderBar.value += 15
+        let stringValue = String(Int(self.sliderBar.value))
+        self.TimeLabel.attributedText = PodcastViewModel.timeFetch(num: stringValue, string: nil, size: 17)
+        player.seek(to: CMTime(value: CMTimeValue(sliderBar.value), timescale: 1))
+        if sliderBar.value >= Float(Int(PodcastViewModel.mp3RunTimeList[PodcastPlayViewController.mp3SelectedNum])!) {
+            playIfEnd()
+        }
+        
+    }
+    
+    
+
+
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        
         guard context == &playerItemContext else {
             super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
             return
@@ -205,7 +284,6 @@ class PodcastPlayViewController: UIViewController {
             
             switch status {
             case .readyToPlay:
-                print("qwqweq")
                 indicatorView.stopAnimating()
                 indicatorView.isHidden = true
             case .failed:
@@ -232,24 +310,3 @@ class PodcastPlayViewController: UIViewController {
 
 
 
-//MARK: - UI이미지 색 조정 확장
-extension UIImage {
-    func imageWithColor(color: UIColor) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
-        color.setFill()
-
-        let context = UIGraphicsGetCurrentContext()
-        context?.translateBy(x: 0, y: self.size.height)
-        context?.scaleBy(x: 1.0, y: -1.0)
-        context?.setBlendMode(CGBlendMode.normal)
-
-        let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
-        context?.clip(to: rect, mask: self.cgImage!)
-        context?.fill(rect)
-
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-
-        return newImage!
-    }
-}

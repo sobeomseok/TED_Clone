@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseStorage
 import Firebase
 
 class PodcastViewController: UICollectionViewController {
@@ -55,6 +54,7 @@ private func configureUI() {
 
     //컬렉션뷰 셀의 갯수입니다.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
         return PodcastViewModel.nameList.count
     }
     
@@ -63,8 +63,9 @@ private func configureUI() {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PodCastCollectionViewCell.identifier, for: indexPath) as? PodCastCollectionViewCell else { return UICollectionViewCell() }
         cell.imageView.image = PodcastViewModel.imageList[indexPath.row].image
+        cell.labelView.text = PodcastViewModel.nameList[indexPath.row]
         return cell
-        }
+    }
     
     
    //컬렉션뷰 헤더 생성입니다.

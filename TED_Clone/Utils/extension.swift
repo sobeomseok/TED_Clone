@@ -62,25 +62,48 @@ extension UIView {
         }
     }
 }
-    //MARK: - 이미지 다운로드
-    extension UIImageView {
-        func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit) {
-            contentMode = mode
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                guard
-                    let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                    let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                    let data = data, error == nil,
-                    let image = UIImage(data: data)
-                    else { return }
-                DispatchQueue.main.async() { [weak self] in
-                    self?.image = image
-                }
-            }.resume()
-        }
-        func downloaded(from link: String, contentMode mode: ContentMode = .scaleAspectFit) {
-            guard let url = URL(string: link) else { return }
-            downloaded(from: url, contentMode: mode)
-        }
+//MARK: - 이미지 다운로드
+extension UIImageView {
+    func downloaded(from url: URL, contentMode mode: ContentMode = .scaleAspectFit,complition: @escaping (Int) -> Void) {
+        contentMode = mode
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard
+                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+                let data = data, error == nil,
+                let image = UIImage(data: data)
+            else {
+                return
+            }
+            DispatchQueue.main.async() { [weak self] in
+                self?.image = image
+                complition(1)
+            }
+        }.resume()
     }
+    
+}
 
+
+
+//MARK: - UI이미지 색 조정 확장
+extension UIImage {
+    func imageWithColor(color: UIColor) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(self.size, false, self.scale)
+        color.setFill()
+
+        let context = UIGraphicsGetCurrentContext()
+        context?.translateBy(x: 0, y: self.size.height)
+        context?.scaleBy(x: 1.0, y: -1.0)
+        context?.setBlendMode(CGBlendMode.normal)
+
+        let rect = CGRect(origin: .zero, size: CGSize(width: self.size.width, height: self.size.height))
+        context?.clip(to: rect, mask: self.cgImage!)
+        context?.fill(rect)
+
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        return newImage!
+    }
+}
