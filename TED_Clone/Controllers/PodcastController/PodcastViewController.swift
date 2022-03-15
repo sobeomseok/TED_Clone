@@ -6,14 +6,16 @@
 //
 
 import UIKit
+import Firebase
 
 class PodcastViewController: UICollectionViewController {
-
     
     
     
     //MARK: - Properties
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()
@@ -40,28 +42,31 @@ private func configureUI() {
     collectionView.register(PodCastCollectionViewCell.self, forCellWithReuseIdentifier: PodCastCollectionViewCell.identifier)
     collectionView.register(CollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: CollectionReusableView.identifier)
     
-   
-    
 }
+    
 
-
-
-
+    
+    
+    
 
 
  //MARK: - 컬렉션뷰 데이터소스, 델리게이트
 
     //컬렉션뷰 셀의 갯수입니다.
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        
+        return PodcastViewModel.nameList.count
     }
     
     //컬렉션뷰 셀 생성입니다.
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PodCastCollectionViewCell.identifier, for: indexPath) as? PodCastCollectionViewCell else { return UICollectionViewCell() }
+        cell.imageView.image = PodcastViewModel.imageList[indexPath.row].image
+        cell.labelView.text = PodcastViewModel.nameList[indexPath.row]
         return cell
     }
+    
     
    //컬렉션뷰 헤더 생성입니다.
     
@@ -72,7 +77,9 @@ private func configureUI() {
     
     //셀을 선택 한 뒤에 상세뷰로 이동하는 코드 입니다.
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        PodcastDetailViewController.selectedNum = indexPath.row
         navigationController?.pushViewController(PodcastDetailViewController(), animated: true)
+
     }
     
 
@@ -114,76 +121,3 @@ extension PodcastViewController: UICollectionViewDelegateFlowLayout {
 
 
 
-//MARK: - 셀 커스텀
-class PodCastCollectionViewCell: UICollectionViewCell {
-    
-    //indentifier의 실수를 방지하기 위해 변수로 만듭것입니다.
-    static let identifier = "podCastCell"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        cellSetting()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    private let imageView: UIImageView = {
-       let img = UIImageView()
-        img.contentMode = .scaleAspectFill
-        img.image = UIImage(named: "PodcastImage1")
-       return img
-    }()
-    
-    private let labelView: UILabel = {
-        let label = UILabel()
-        label.textColor = .lightGray
-        label.text = "1212.12.12"
-        label.font = .systemFont(ofSize: 15)
-        return label
-    }()
-    
-    
-    private func cellSetting() {
-        addSubview(imageView)
-        imageView.anchor(top: self.topAnchor, left: self.leadingAnchor , bottom: self.bottomAnchor, right: self.trailingAnchor)
-        
-        addSubview(labelView)
-        labelView.anchor(top: imageView.bottomAnchor, paddingTop: 10)
-    }
-}
-
-
-
-//MARK: - 헤더 커스텀
-
-class CollectionReusableView: UICollectionReusableView {
-    
-    static let identifier = "header"
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        headerSetting()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    
-    private let labelView: UILabel = {
-        let label = UILabel()
-        label.textColor = .white
-        label.text = "TED 팟 캐스트"
-        label.font = .boldSystemFont(ofSize: 23)
-        return label
-    }()
-    
-   private func headerSetting() {
-       addSubview(labelView)
-       labelView.anchor(top: self.topAnchor, left: self.leadingAnchor, bottom: self.bottomAnchor, right: self.trailingAnchor,paddingLeft: 20,paddingBottom: 20)
-    }
-}

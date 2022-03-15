@@ -17,7 +17,7 @@ class TabBarController: UITabBarController {
     
     private func setUpControllers() {
         let home = HomeViewController()
-        let podcast = PodcastViewController(collectionViewLayout: UICollectionViewFlowLayout())
+        let podcast = PodcastLoadingController()
         let search = SearchViewController()
         let profile = ProfileViewController()
         

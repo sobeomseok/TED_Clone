@@ -12,6 +12,8 @@ class PodcastDetailViewController: UIViewController {
     
 //MARK: - Properties
     
+  static var selectedNum = 0
+    
     private let tableView: UITableView = {
         let tableview = UITableView(frame: .zero, style: .grouped)
         tableview.backgroundColor = .backgroundColor
@@ -26,25 +28,25 @@ class PodcastDetailViewController: UIViewController {
         return view
     }()
 
-    private let detailImage: UIImageView = {
+    var detailImage: UIImageView = {
         let image = UIImageView()
-        image.image = UIImage(named: "PodcastImage1")
+        image.image = PodcastViewModel.imageList[selectedNum].image
         return image
     }()
     
     
-    private let detailLabel: UILabel = {
+     var detailLabel: UILabel = {
         let label = UILabel()
-        label.text = "TED Talks Daily"
+         label.text = PodcastViewModel.nameList[selectedNum]
         label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 17)
         return label
     }()
     
     
-    private let detailText: UILabel = {
+    var detailText: UILabel = {
        let textview = UILabel()
-        textview.text = "Lorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er elLorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er elLorem ipsum dolor sit er elorem ipsum dolor sit er eloror sit er elorem ipsum dolor sit er elorem ipsum dolor sit er psum dolor sit er elorem ipsum dolor or sit er elorem ipsum dolor sit er el"
+        textview.text = PodcastViewModel.detailTextList[selectedNum]
         textview.textColor = .white
         textview.numberOfLines = 0
         textview.backgroundColor = .clear
@@ -74,6 +76,8 @@ class PodcastDetailViewController: UIViewController {
         navigationController?.navigationBar.topItem?.backButtonTitle = "TED 팟 캐스트"
         navigationController?.navigationBar.tintColor = .white
         makeLayout()
+        
+
     }
     
     //MARK: - Helper Function
@@ -111,12 +115,24 @@ extension PodcastDetailViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 30
+        switch PodcastDetailViewController.selectedNum {
+        case 0:
+            return PodcastViewModel.nameList.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PodcastDetailViewCell.identifier, for: indexPath) as? PodcastDetailViewCell else { return UITableViewCell() }
-        return cell
+        switch PodcastDetailViewController.selectedNum {
+        case 0:
+            cell.nameLabel.text = PodcastViewModel.mp3NameList[indexPath.row]
+            cell.timeLabel.attributedText  = PodcastViewModel.timeFetch(num: PodcastViewModel.mp3RunTimeList[indexPath.row], string: PodcastViewModel.mp3TimeList[indexPath.row], size: 13)
+            return cell
+        default:
+            return cell
+        }
     }
     
     
@@ -142,64 +158,11 @@ extension PodcastDetailViewController: UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        PodcastPlayViewController.selectedNum = PodcastDetailViewController.selectedNum
+        PodcastPlayViewController.mp3SelectedNum = indexPath.row
         navigationController?.pushViewController(PodcastPlayViewController(), animated: true)
     }
 }
 
 
 
-//MARK: - 커스텀 셀
-
-class PodcastDetailViewCell: UITableViewCell {
-    static let identifier = "DetailCell"
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        self.backgroundColor = .clear
-        cellSetting()
-    }
-
-        
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    
-    private let cellImage: UIImageView = {
-        let image = UIImageView()
-        image.image = UIImage(systemName: "arrowtriangle.right.fill")
-        image.tintColor = .white
-        return image
-    }()
-    
-    private let nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "To future generations of women, you are the awqeqwewqrewtertert"
-        label.textColor = .white
-        label.font = .systemFont(ofSize: 14)
-        return label
-    }()
-    
-    private let timeLabel: UILabel = {
-        let label = UILabel()
-        label.text = "15:07  14 November 2020"
-        label.textColor = .lightGray
-        label.font = .systemFont(ofSize: 12)
-        return label
-    }()
-    
-    
-    func cellSetting() {
-       addSubview(cellImage)
-        cellImage.anchor(left: self.leadingAnchor,paddingLeft: 10,width: 20, height: 25)
-        cellImage.centerY(inView: self)
-    
-        addSubview(nameLabel)
-        nameLabel.anchor(left: cellImage.trailingAnchor,bottom: cellImage.topAnchor,right: self.trailingAnchor,paddingLeft: 20,paddingBottom: -10,paddingRight: 10)
-        
-        addSubview(timeLabel)
-        timeLabel.anchor(top: cellImage.bottomAnchor,left: cellImage.trailingAnchor, paddingTop: -10,paddingLeft: 20)
-    }
-    
-}
